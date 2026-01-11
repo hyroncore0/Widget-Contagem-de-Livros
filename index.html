@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+body {
+  margin: 0;
+  background: transparent;
+  font-family: system-ui, -apple-system;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.card { text-align: center; }
+.number { font-size: 64px; font-weight: 700; }
+.label { font-size: 16px; opacity: .7; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="number" id="count">–</div>
+  <div class="label">Livros Lidos</div>
+</div>
+
+<script>
+fetch("https://widget-contar-livros.hyroncore0.workers.dev/")
+  .then(r => r.json())
+  .then(d => document.getElementById("count").textContent = d.count)
+  .catch(() => document.getElementById("count").textContent = "—");
+</script>
+</body>
+</html>
