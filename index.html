@@ -15,19 +15,37 @@ body {
 .card { text-align: center; }
 .number { font-size: 64px; font-weight: 700; color: white; }
 .label { font-size: 16px; opacity: .7; color: white; }
+.last {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: .85;
+  color: white;
+}
 </style>
 </head>
 <body>
+
 <div class="card">
   <div class="number" id="count">–</div>
   <div class="label">Livros Lidos</div>
+  <div class="last" id="last">Último Livro: —</div>
 </div>
 
 <script>
 fetch("https://widget-contar-livros.hyroncore0.workers.dev/")
   .then(r => r.json())
-  .then(d => document.getElementById("count").textContent = d.count)
-  .catch(() => document.getElementById("count").textContent = "—");
+  .then(d => {
+    document.getElementById("count").textContent = d.count ?? "–";
+    document.getElementById("last").textContent =
+      d.lastBook
+        ? `Último Livro: ${d.lastBook}`
+        : "Último Livro: —";
+  })
+  .catch(() => {
+    document.getElementById("count").textContent = "—";
+    document.getElementById("last").textContent = "Último Livro: —";
+  });
 </script>
+
 </body>
 </html>
