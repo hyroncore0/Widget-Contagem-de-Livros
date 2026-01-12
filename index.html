@@ -34,15 +34,23 @@ body {
 }
 
 .card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   text-align: center;
-  position: relative;
-  z-index: 2;
 }
 
 .number { 
   font-size: 64px; 
   font-weight: 700; 
-  color: white; 
+  color: white;
+  line-height: 1;
 }
 
 .label { 
@@ -51,7 +59,7 @@ body {
 }
 
 .last {
-  margin-top: 10px;
+  margin-top: 0;
   font-size: 14px;
   color: white;
 }
